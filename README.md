@@ -15,7 +15,7 @@ A simple Node.js chatbot using Google Gemini via the Generative Language API.
    Windows PowerShell:
 
    ```powershell
-        $env:GOOGLE_API_KEY = 'YOUR_REAL_KEY'
+        $env:GOOGLE_API_KEY = 'YOUR_API_KEY'
    ```
 
 3. Install the web server dependency:
@@ -33,7 +33,7 @@ A simple Node.js chatbot using Google Gemini via the Generative Language API.
    If port `5000` is already in use, start on a different port:
 
    ```bash
-   PORT=5001 npm start
+   $env:PORT=5001; npm start
    ```
 
 5. Open your browser to:
@@ -41,6 +41,12 @@ A simple Node.js chatbot using Google Gemini via the Generative Language API.
    ```text
    http://localhost:5000
    ```
+
+6. Deploying to Vercel
+
+- Add the `GOOGLE_API_KEY` environment variable in your Vercel Project Settings → Environment Variables.
+- Set the variable name to `GOOGLE_API_KEY` and the value to your API key, then redeploy.
+- A `vercel.json` file is included to route all requests to `server.js` for server-side handling.
 
 ## Usage
 

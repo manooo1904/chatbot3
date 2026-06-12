@@ -4,22 +4,29 @@ import { dirname, join } from 'path';
 
 const API_KEY = process.env.GOOGLE_API_KEY;
 const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5000;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 if (!API_KEY) {
-  console.error('Missing GOOGLE_API_KEY environment variable.');
-  process.exit(1);
+  console.warn('Warning: Missing GOOGLE_API_KEY environment variable. Server will start but API calls will return 503 until configured.');
 }
 
 const app = express();
 app.use(express.json());
 app.use(express.static(join(__dirname, 'public')));
 
+app.get('/', (req, res) => {
+  res.sendFile(join(__dirname, 'public', 'index.html'));
+});
+
 app.post('/api/generate', async (req, res) => {
   const prompt = req.body?.prompt;
   if (!prompt || typeof prompt !== 'string') {
     return res.status(400).json({ error: 'Missing prompt in request body.' });
+  }
+
+  if (!API_KEY) {
+    return res.status(503).json({ error: 'Server not configured with GOOGLE_API_KEY environment variable.' });
   }
 
   const body = {
