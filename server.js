@@ -4,7 +4,7 @@ import { dirname, join } from 'path';
 
 const API_KEY = process.env.GOOGLE_API_KEY;
 const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5002;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 if (!API_KEY) {
