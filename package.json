@@ -1,0 +1,26 @@
+{
+  "name": "antigravity-chatbot",
+  "version": "1.0.0",
+  "description": "Simple chatbot using Google Gemini and the Generative Language API.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "chatbot",
+    "google",
+    "gemini",
+    "generativelanguage",
+    "antigravity"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.22.2",
+    "node-fetch": "^3.3.2"
+  }
+}
